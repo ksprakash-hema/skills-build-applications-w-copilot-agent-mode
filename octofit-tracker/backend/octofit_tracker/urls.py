@@ -18,14 +18,25 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import api_root, router
 
+
+# Use environment variable for codespace base URL in API root
 codespace_name = os.environ.get('CODESPACE_NAME')
 if codespace_name:
     base_url = f"https://{codespace_name}-8000.app.github.dev"
 else:
     base_url = "http://localhost:8000"
 
+from django.http import JsonResponse
+from django.urls import re_path
+
+def api_root_with_base_url(request):
+    return JsonResponse({
+        "api_base_url": base_url + "/api/",
+        "message": "Welcome to the Octofit Tracker API!"
+    })
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', api_root, name='api-root'),
+    re_path(r'^api/?$', api_root_with_base_url, name='api-root'),
     path('api/', include(router.urls)),
 ]
