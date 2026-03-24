@@ -36,18 +36,26 @@ const Activities = () => {
       {activities.length === 0 ? (
         <p>No activities found.</p>
       ) : (
-        <div className="row">
-          {activities.map((activity) => (
-            <div key={activity.id} className="col-md-6 mb-3">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{activity.name}</h5>
-                  <p className="card-text">{activity.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Duration (mins)</th>
+              <th>Date</th>
+              <th>User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {activities.map((activity) => (
+              <tr key={activity._id}>
+                <td>{activity.type}</td>
+                <td>{activity.duration}</td>
+                <td>{new Date(activity.date).toLocaleDateString()}</td>
+                <td>{activity.user}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
