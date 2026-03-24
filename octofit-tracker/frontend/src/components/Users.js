@@ -39,19 +39,17 @@ const Users = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Username</th>
+              <th>Name</th>
               <th>Email</th>
-              <th>Join Date</th>
-              <th>Status</th>
+              <th>Team</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.username}</td>
+              <tr key={user._id}>
+                <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{new Date(user.date_joined).toLocaleDateString()}</td>
-                <td>{user.is_active ? 'Active' : 'Inactive'}</td>
+                <td>{user.team}</td>
               </tr>
             ))}
           </tbody>

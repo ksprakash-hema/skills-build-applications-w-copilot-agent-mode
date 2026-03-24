@@ -36,20 +36,22 @@ const Workouts = () => {
       {workouts.length === 0 ? (
         <p>No workouts found.</p>
       ) : (
-        <div className="row">
-          {workouts.map((workout) => (
-            <div key={workout.id} className="col-md-6 mb-3">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{workout.name}</h5>
-                  <p className="card-text">Type: {workout.workout_type}</p>
-                  <p className="card-text">Duration: {workout.duration} minutes</p>
-                  <p className="card-text">Calories: {workout.calories_burned}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Workout Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workouts.map((workout) => (
+              <tr key={workout._id}>
+                <td>{workout.name}</td>
+                <td>{workout.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );

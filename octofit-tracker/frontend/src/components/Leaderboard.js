@@ -41,17 +41,15 @@ const Leaderboard = () => {
             <tr>
               <th>Rank</th>
               <th>User</th>
-              <th>Points</th>
-              <th>Activities</th>
+              <th>Score</th>
             </tr>
           </thead>
           <tbody>
             {leaderboard.map((entry, index) => (
-              <tr key={entry.id}>
+              <tr key={entry._id}>
                 <td>{index + 1}</td>
                 <td>{entry.user}</td>
-                <td>{entry.points}</td>
-                <td>{entry.activities_count}</td>
+                <td>{entry.score}</td>
               </tr>
             ))}
           </tbody>

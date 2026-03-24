@@ -36,19 +36,20 @@ const Teams = () => {
       {teams.length === 0 ? (
         <p>No teams found.</p>
       ) : (
-        <div className="row">
-          {teams.map((team) => (
-            <div key={team.id} className="col-md-6 mb-3">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{team.name}</h5>
-                  <p className="card-text">Leader: {team.leader}</p>
-                  <p className="card-text">Members: {team.members_count}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Team Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {teams.map((team) => (
+              <tr key={team._id}>
+                <td>{team.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
